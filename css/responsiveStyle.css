@@ -1,0 +1,17 @@
+@media screen and (max-width: 450px) {
+  header{
+    width: 100%;
+  }
+  
+  h1{
+    font-size: 40px;
+  }
+
+  #calc{
+    width: 90%;
+  }
+
+  .button{
+    font-size: 30px;
+  }
+}

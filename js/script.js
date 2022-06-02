@@ -1,3 +1,5 @@
+let x, y, z, resultado;
+
 let visor = document.getElementById("inp1");
 const num1 = document.getElementById("bt5");
 const num2 = document.getElementById("bt6");
@@ -17,71 +19,128 @@ const bRes = document.getElementById("bt16");
 const bPonto = document.getElementById("bt18");
 
 num1.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "1";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "1";
+  }
 });
 num2.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "2";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "2";
+  }
 });
 num3.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "3";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "3";
+  }
 });
 num4.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "4";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "4";
+  }
 });
 num5.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "5";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "5";
+  }
 });
 num6.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "6";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "6";
+  }
 });
 num7.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "7";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "7";
+  }
 });
 num8.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "8";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "8";
+  }
 });
 num9.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "9";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "9";
+  }
 });
 num0.addEventListener('click', event => {
-  if(visor.value.length < 8)
-  visor.value = visor.value + "0";
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value==x){
+      visor.value = "";
+    }
+    visor.value = visor.value + "0";
+  }
 });
 bPonto.addEventListener('click', event => {
+  if(visor.value.length < 8){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value == ""){
+      visor.value = "0";
+    }
   visor.value = visor.value + ".";
+  }
 });
-bSoma.value = "+";
-bSub.value = "-";
-bMult.value = "*";
-bDiv.value = "/";
 
-let memoriaCalc = [], operacaoCalc = [];
-
+// Funçao modificada e testada
 function Somar(){
-  operacaoCalc.push(parseFloat(visor.value));
-  operacaoCalc.push(bSoma.value);
-  memoriaCalc.push(operacaoCalc);
-  console.log(memoriaCalc);
-  operacaoCalc = [];
-  visor.value = "";
+  if(visor.value == bSoma.innerHTML){
+    visor.value = resultado;
+  }else if(visor.value == resultado){
+    visor.value = bSoma.innerHTML;
+  }else if(!x){
+    x = parseFloat(visor.value);
+    visor.value = bSoma.innerHTML;
+    z = bSoma.innerHTML;
+  }else if(x && !y){
+    y = parseFloat(visor.value);
+    z = bSoma.innerHTML;
+    visor.value = `${x} + ${y}`;
+  }
+  console.log("Soma", x, y, z);
 }
 
+// Próxima função a ser modificada e testada
+ 
 function Subtrair(){
-  operacaoCalc.push(parseFloat(visor.value));
-  operacaoCalc.push(bSub.value);
-  memoriaCalc.push(operacaoCalc);
-  console.log(memoriaCalc);
-  operacaoCalc = [];
-  visor.value = "";
+  if(!x){
+    x = parseFloat(visor.value);
+    visor.value = "-";
+  }else if(x && !y){
+    y = parseFloat(visor.value);
+    z = "-";
+    if(x && y){
+      x -= y;
+      visor.value = x;
+      y = null;
+    }
+  }
+  console.log(x, y, z);
 }
 
 function Multiplicar(){
@@ -102,46 +161,36 @@ function Dividir(){
   visor.value = "";
 }
 
-// Função dando erro ao executar expressões
+// Função testada junto com a operação Somar
 function Resultado(){
-
-  let l, result;
-
-  operacaoCalc.push(parseFloat(visor.value));
-  operacaoCalc.push("");
-  memoriaCalc.push(operacaoCalc);
-
-  for(l = 0; l < memoriaCalc.length; l++){
-    if(memoriaCalc[l][1] === "*"){        
-      result = memoriaCalc[l][0] * memoriaCalc[l+1][0];
-    }else if(memoriaCalc[l][1] === "/"){
-      result = memoriaCalc[l][0] / memoriaCalc[l+1][0];
-    }else if(memoriaCalc[l][1] === "+"){        
-      result = memoriaCalc[l][0] + memoriaCalc[l+1][0];
-    }else if(memoriaCalc[l][1] === "-"){
-      result = memoriaCalc[l][0] - memoriaCalc[l+1][0];
-    }
+  if(z === "+" && x && !y){
+    y = parseFloat(visor.value);
+    resultado = x + y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
+  }else if(visor.value === `${x} + ${y}`){
+    resultado = x + y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
   }
-
-  if(result.toString().length < 8){
-    visor.value = result;
-  }else{
-    visor.value = "ERR";
-  }
-  operacaoCalc = [];
-  memoriaCalc = [];
-  console.log(typeof(result), result);
+  console.log(x, y, z, resultado);
 }
 
 function LimparCampo(){
-  let palavra = visor.value;
-  let limparUltCampo = palavra.substring(0, palavra.length - 1);
-  visor.value = limparUltCampo;
+  visor.value = historico[historico.length - 1];
+  historico.pop();
+  // let palavra = visor.value;
+  // let limparUltCampo = palavra.substring(0, palavra.length - 1);
+  // visor.value = limparUltCampo;
 }
 
 function Reset(){
-  memoriaCalc = [];
-  operacaoCalc = [];
+  x = null;
+  y = null;
   console.clear();
   visor.value = "";
 }

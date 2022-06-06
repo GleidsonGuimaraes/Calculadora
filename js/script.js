@@ -100,68 +100,101 @@ num0.addEventListener('click', event => {
 });
 bPonto.addEventListener('click', event => {
   if(visor.value.length < 8){
-    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value == ""){
+    if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"||visor.value == ""||visor.value == x){
       visor.value = "0";
     }
   visor.value = visor.value + ".";
   }
 });
 
-// Funçao modificada e testada
+// Funçao corrigida e testada
 function Somar(){
-  if(visor.value == bSoma.innerHTML){
+  if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"){
     visor.value = resultado;
   }else if(visor.value == resultado){
     visor.value = bSoma.innerHTML;
+    z = bSoma.innerHTML;
   }else if(!x){
     x = parseFloat(visor.value);
     visor.value = bSoma.innerHTML;
     z = bSoma.innerHTML;
   }else if(x && !y){
     y = parseFloat(visor.value);
-    z = bSoma.innerHTML;
-    visor.value = `${x} + ${y}`;
+    if(z != bSoma.innerHTML){
+      visor.value = `${x} ${z} ${y}`;
+    }else{
+      visor.value = `${x} + ${y}`;
+    }
   }
   console.log("Soma", x, y, z);
 }
 
-// Próxima função a ser modificada e testada
- 
+// Função corrigida e testada 
 function Subtrair(){
-  if(!x){
+  if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"){
+    visor.value = resultado;
+  }else if(visor.value == resultado){
+    visor.value = bSub.innerHTML;
+    z = bSub.innerHTML;
+  }else if(!x){
     x = parseFloat(visor.value);
-    visor.value = "-";
+    visor.value = bSub.innerHTML;
+    z = bSub.innerHTML;
   }else if(x && !y){
     y = parseFloat(visor.value);
-    z = "-";
-    if(x && y){
-      x -= y;
-      visor.value = x;
-      y = null;
+    if(z != bSub.innerHTML){
+      visor.value = `${x} ${z} ${y}`;
+    }else{
+      visor.value = `${x} - ${y}`;
     }
   }
-  console.log(x, y, z);
+  console.log("Subtração", x, y, z);
 }
 
+// Função corrigida e testada
 function Multiplicar(){
-  operacaoCalc.push(parseFloat(visor.value));
-  operacaoCalc.push(bMult.value);
-  memoriaCalc.push(operacaoCalc);
-  console.log(memoriaCalc);
-  operacaoCalc = [];
-  visor.value = "";
+  if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"){
+    visor.value = resultado;
+  }else if(visor.value == resultado){
+    visor.value = bMult.innerHTML;
+    z = bMult.innerHTML;
+  }else if(!x){
+    x = parseFloat(visor.value);
+    visor.value = bMult.innerHTML;
+    z = bMult.innerHTML;
+  }else if(x && !y){
+    y = parseFloat(visor.value);
+    if(z != bMult.innerHTML){
+      visor.value = `${x} ${z} ${y}`;
+    }else{
+      visor.value = `${x} * ${y}`;
+    }
+  }
+  console.log("Multiplicação", x, y, z);
 }
 
+// Função corrigida e testada
 function Dividir(){
-  operacaoCalc.push(parseFloat(visor.value));
-  operacaoCalc.push(bDiv.value);
-  memoriaCalc.push(operacaoCalc);
-  console.log(memoriaCalc);
-  operacaoCalc = [];
-  visor.value = "";
+  if(visor.value == "+"||visor.value == "-"||visor.value == "*"||visor.value == "/"){
+    visor.value = resultado;
+  }else if(visor.value == resultado){
+    visor.value = bDiv.innerHTML;
+    z = bDiv.innerHTML;
+  }else if(!x){
+    x = parseFloat(visor.value);
+    visor.value = bDiv.innerHTML;
+    z = bDiv.innerHTML;
+  }else if(x && !y){
+    y = parseFloat(visor.value);
+    if(z != bDiv.innerHTML){
+      visor.value = `${x} ${z} ${y}`;
+    }else{
+      visor.value = `${x} / ${y}`;
+    }
+  }
 }
 
-// Função testada junto com a operação Somar
+// Função testada junto com todas as operações
 function Resultado(){
   if(z === "+" && x && !y){
     y = parseFloat(visor.value);
@@ -176,18 +209,55 @@ function Resultado(){
     x = resultado;
     y = null;
     z = null;
+  }else if(z === "-" && x && !y){
+    y = parseFloat(visor.value);
+    resultado = x - y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
+  }else if(visor.value === `${x} - ${y}`){
+    resultado = x - y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
+  }else if(z === "*" && x && !y){
+    y = parseFloat(visor.value);
+    resultado = x * y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
+  }else if(visor.value === `${x} * ${y}`){
+    resultado = x * y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
+  }else if(z === "/" && x && !y){
+    y = parseFloat(visor.value);
+    resultado = x / y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
+  }else if(visor.value === `${x} / ${y}`){
+    resultado = x / y;
+    visor.value = resultado;
+    x = resultado;
+    y = null;
+    z = null;
   }
   console.log(x, y, z, resultado);
 }
 
+//Próxima função a ser criada
 function LimparCampo(){
-  visor.value = historico[historico.length - 1];
-  historico.pop();
-  // let palavra = visor.value;
-  // let limparUltCampo = palavra.substring(0, palavra.length - 1);
-  // visor.value = limparUltCampo;
+  
 }
 
+// Função para resetar todo o sistema
 function Reset(){
   x = null;
   y = null;
